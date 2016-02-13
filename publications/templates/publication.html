@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <img src="{% static publication.Image %}" class="thumbnail" alt="image" style="max-width: 100%;" />
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+            <h2>{{ publication.title }}</h2>
+            <p class="lead">{{ publication.description }}</p>
+            <p>{{ publication.article|safe }}</p>
+
+            <ul class="project-info">
+                <li><h6>Дата:</h6>{{ publication.publish_date }}</li>
+                <li><h6>Автор:</h6>{{ publication.author }}</li>
+            </ul>
+
+            <button class="btn btn-inverse pull-left" type="button">{{ publication.link }}</button>
+            <a href="#" class="pull-right"><i class="icon-arrow-left"></i>Вернутся на главную</a>
+
+        </div>
+
+    </div>
+
+{% endblock %}

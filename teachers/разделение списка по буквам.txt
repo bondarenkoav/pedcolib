@@ -1,0 +1,59 @@
+"""
+    if teachers_spisok == "a":
+        teachers_symbol = "À"
+    elif teachers_spisok == "b":
+        teachers_symbol = "Á"
+    elif teachers_spisok == "v":
+        teachers_symbol = "Â"
+    elif teachers_spisok == "g":
+        teachers_symbol = "Ã"
+    elif teachers_spisok == "d":
+        teachers_symbol = "Ä"
+    elif teachers_spisok == "e":
+        teachers_symbol = "Å¸"
+    elif teachers_spisok == "j":
+        teachers_symbol = "Æ"
+    elif teachers_spisok == "z":
+        teachers_symbol = "Ç"
+    elif teachers_spisok == "i":
+        teachers_symbol = "Èé"
+    elif teachers_spisok == "k":
+        teachers_symbol = "Ê"
+    elif teachers_spisok == "l":
+        teachers_symbol = "Ë"
+    elif teachers_spisok == "m":
+        teachers_symbol = "Ì"
+    elif teachers_spisok == "n":
+        teachers_symbol = "Í"
+    elif teachers_spisok == "o":
+        teachers_symbol = "Î"
+    elif teachers_spisok == "p":
+        teachers_symbol = "Ï"
+    elif teachers_spisok == "r":
+        teachers_symbol = "Ð"
+    elif teachers_spisok == "s":
+        teachers_symbol = "Ñ"
+    elif teachers_spisok == "t":
+        teachers_symbol = "Ò"
+    elif teachers_spisok == "u":
+        teachers_symbol = "Ó"
+    elif teachers_spisok == "f":
+        teachers_symbol = "Ô"
+    elif teachers_spisok == "h":
+        teachers_symbol = "Õ"
+    elif teachers_spisok == "c":
+        teachers_symbol = "Ö"
+    elif teachers_spisok == "ch":
+        teachers_symbol = "×"
+    elif teachers_spisok == "sh":
+        teachers_symbol = "Ø"
+    elif teachers_spisok == "shya":
+        teachers_symbol = "Ù"
+    elif teachers_spisok == "ee":
+        teachers_symbol = "Ý"
+    elif teachers_spisok == "yu":
+        teachers_symbol = "Þ"
+    elif teachers_spisok == "ya":
+        teachers_symbol = "ß"
+    else: teachers_symbol = "À"
+"""

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h6>Дата публикования: {{ teacher.publish_date }}</h6>
+    <h3>{{ teacher.surname }} {{ teacher.name }} {{ teacher.middlename }}</h3>
+    <h5>Должность: {{ teacher.post }}</h5>
+    <h5>Звание: {{ teacher.rank }}</h5>
+    <h5>Степень: {{ teacher.degree }}</h5>
+    <h5>Предметы: {{ teacher.subject }}</h5>
+    <div>{{ teacher.article }}</div>
+    <div>Понравилось: {{ teacher.likes }} кол-во </div>
+    <h6>Автор: {{ teacher.author }}</h6>
+    <hr/>
+    <p>Комментарии:</p>
+    {% for comment in comments %}
+        <p>{{ comment.id }}. {{ comment.comment_text }}</p>
+    {% endfor %}
+{% endblock %}

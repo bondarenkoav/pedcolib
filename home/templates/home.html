@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <!-- Begin Headline -->
+    <div class="row headline">
+     	<!-- Slider Carousel
+        ================================================== -->
+        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+            <div class="flexslider">
+                <ul class="slides">
+
+                    {% for picture in slides %}
+                        <li><a href="{{ picture.link }}"><img src="{% static picture.ImagePath %}" alt="{{ picture.title }}" style="width: 100%;"/></a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Headline Text
+        ================================================== -->
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        	<h3>Добро пожаловать в ВИРТУАЛЬНЫЙ МУЗЕЙ. <br />
+            ПЕДАГОГИЧЕСКОГО КОЛЛЕДЖА Г.ОРСКА.</h3>
+            <p class="lead">Здесь Вы узнаете чем "жил" и "живет" Педагогический колледж города Орска.</p>
+            <p>Мы собираем и каталогизируем данные о преподавателях, студентах, творческих и спортивных коллективах.</p>
+            <a href="#"><i class="icon-plus-sign"></i>Подробнее</a>
+        </div>
+    </div>
+    <!-- End Headline -->
+
+    <!-- Begin Gallery Row -->
+    <div class="row gallery-row">
+
+    	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h5 class="title-bg">Галлерея публикаций</h5>
+            <!-- Gallery Thumbnails
+            ================================================== -->
+            <div class="row clearfix no-margin">
+                <ul class="gallery-post-grid holder">
+
+                    {% for publication in publications %}
+                        <li  class="col-lg-3 col-md-3 col-sm-6 col-xs-12 gallery-item" data-type="illustration">
+                            <a href="/publications/{{ publication.id }}/"><img src="{% static publication.Image %}" alt="Gallery" style="max-width: 100%;"></a>
+                            <span class="project-details"><a href="/publications/{{ publication.id }}/">{{ publication.title|truncatewords:5 }}</a>{{ publication.description|truncatechars:60 }}&nbsp;<a href="/publications/{{ publication.id }}/">Подробнее</a></span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- End Gallery Row -->
+
+    <!-- Begin Bottom Section -->
+
+    <!-- Blog Preview
+    ================================================== -->
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+            <h5 class="title-bg">Последние новости
+                <button id="btn-blog-next" class="btn btn-inverse btn-mini" type="button" style="margin-top: -9px;">&raquo;</button>
+                <button id="btn-blog-prev" class="btn btn-inverse btn-mini" type="button" style="margin-top: -9px;">&laquo;</button>
+            </h5>
+
+            <div id="blogCarousel" class="carousel slide ">
+            <!-- Carousel items -->
+                <div class="carousel-inner">
+
+                {% for news in news_all %}
+                    {% if forloop.first %}
+                        <div class="active item">
+                            <img src="{% static news.ImagePath %}" alt="" class="align-left blog-thumb-preview" style="width: 60%;"/>
+                            <div class="post-info clearfix">
+                                <h4><a href="/news/{{ news.id }}/">{{ news.title }}</a></h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <span class="glyphicon glyphicon-calendar" style="margin-right: 5px;"></span>
+                                        <strong>{{ news.publish_date|date:"SHORT_DATE_FORMAT" }}</strong>
+                                    </li>
+                                    <li>
+                                        <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>
+                                        <strong>{{ news.author }}</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="blog-summary" style="text-align: justify;">{{ news.article|truncatewords:20|safe }}<a href="/news/{{ news.id }}/"> Подробнее</a></p>
+                        </div>
+                    {% else %}
+                        <div class="item">
+                            <img src="{% static news.ImagePath %}" alt="" class="align-left blog-thumb-preview" style="width: 60%;"/>
+                            <div class="post-info clearfix">
+                                <h4><a href="/news/{{ news.id }}/">{{ news.title }}</a></h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <span class="glyphicon glyphicon-calendar" style="margin-right: 5px;"></span>
+                                        <strong>{{ news.publish_date|date:"SHORT_DATE_FORMAT" }}</strong>
+                                    </li>
+                                    <li>
+                                        <span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>
+                                        <strong>{{ news.author }}</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="blog-summary" style="text-align: justify;">{{ news.article|truncatewords:20|safe }}<a href="/news/{{ news.id }}/"> Подробнее</a></p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <!-- Client Area
+        ================================================== -->
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+            <h5 class="title-bg">Отзывы и благодарнсти
+                <button id="btn-client-next" class="btn btn-inverse btn-mini" type="button" style="margin-top: -9px;">&raquo;</button>
+                <button id="btn-client-prev" class="btn btn-inverse btn-mini" type="button" style="margin-top: -9px;">&laquo;</button>
+            </h5>
+
+            <!-- Client Testimonial Slider-->
+            <div id="clientCarousel" class="carousel slide no-margin">
+            <!-- Carousel items -->
+                <div class="carousel-inner">
+
+                    {% for response in responses %}
+                        {% if forloop.first %}
+                            <div class="active item">
+                                <p class="quote-text" style="text-align: justify;">"{{ response.article|cut:"<p>"|cut:"</p>"|truncatewords:30|safe }}
+                                    <a href="/responses/"> Подробнее</a>
+                                    <cite>- {{ response.name }}</cite>
+                                </p>
+                            </div>
+                        {% else %}
+                            <div class="item">
+                                <p class="quote-text" style="text-align: justify;">"{{ response.article|cut:"<p>"|cut:"</p>"|truncatewords:30|safe }}
+                                    <a href="/responses/"> Подробнее</a>
+                                    <cite>- {{ response.name }}</cite>
+                                </p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!-- End Bottom Section -->
+
+    <!-- End Container -->
+{% endblock %}

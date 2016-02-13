@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb "Статьи" "home.views.home_get_info" %}
+{% endblock %}
+
+{% block content %}
+{% for teacher in teachers %}
+    <h6>Дата публикования: {{ teacher.publish_date }}</h6>
+    <h3><a href="/teachers/get/{{ teacher.id }}">{{ teacher.surname }} {{ teacher.name }} {{ teacher.middlename }}</a></h3>
+    <h5>Должность: {{ teacher.post }}</h5>
+    <h5>Звание: {{ teacher.rank }}</h5>
+    <h5>Степень: {{ teacher.degree }}</h5>
+    <h5>Предметы: {{ teacher.subject }}</h5>
+    <div>{{ teacher.article }}</div>
+    <div><img src="{% static "like.png" %}" width="40px"> {{ teacher.likes }} человек </div>
+    <h6>Автор: {{ teacher.author }}</h6>
+    <hr/>
+{% endfor %}
+{% endblock %}

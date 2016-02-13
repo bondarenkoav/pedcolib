@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+
+<div class="row">
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <h5 class="title-bg">Обращение</h5>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img src="{% static "static/img/responses.jpg" %}" style="width: 100%;" class="img-thumbnail"/>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    Текст обращения к желающим написать отзыв или какую-нибудь пакость. <br/>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce felis odio, vehicula a malesuada ac, imperdiet eu arcu. In ligula velit, ornare sed ornare id, cursus nec arcu. Nullam id dolor augue. Integer maximus mattis diam vitae euismod. Integer et lacus risus. Proin in arcu ornare, consequat tortor non, feugiat risus. Fusce finibus leo tincidunt odio dictum ullamcorper. Suspendisse rutrum mi ipsum, in congue tortor gravida nec.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <h5 class="title-bg">Отзывы и благодарности</h5>
+                <section class="comments">
+                    <ul>
+                    {% for response in responses %}
+                        <li>
+                            <h5>{{ response.name }}</h5>
+                            <div class="comment-content">{{ response.article|cut:"<p>"|cut:"</p>"|safe }}</div>
+                            <span class="comment-date" style="text-align: right;">{{ response.publish_date }}</span>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <ul class="pagination">
+                {% if responses.has_previous %}
+                    <li><a href="/responses/page/{{ responses.previous_page_number }}/">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+
+                {% for page in responses.paginator.page_range %}
+                    {% if page == responses.value %}
+                        <li class="active"><a href="//page/{{ page }}/">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="/responses/page/{{ page }}/">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if response.has_next %}
+                    <li><a href="/responses/page/{{ responses.next_page_number }}/">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="/responses/add_response/" method="post" class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
+                    {% endbuttons %}
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <h3>{{ teacher.fullname }}</h3>
+    <hr/>
+    {% if teacher.post.visible == True %}
+        <div>Должность: {{ teacher.post }}</div>
+    {% endif %}
+    {% if teacher.rank.visible == True %}
+        <div>Звание: {{ teacher.rank }}</div>
+    {% endif %}
+    {% if teacher.degree.visible == True %}
+        <div>Степень: {{ teacher.degree }}</div>
+    {% endif %}
+    <div style="margin-top: 10px">Предметы: {{ teacher.subject }}</div>
+    <hr/>
+
+    <div style="margin-top: 10px">
+        {{ teacher.article|safe }}
+    </div>
+
+    <hr/>
+    <div style="margin-top: 10px">
+        <span class="text-left">Автор: {{ teacher.author }}</span>
+        <span class="text-center">Дата публикования: {{ teacher.publish_date }}</span>
+    </div>
+
+{% endblock %}

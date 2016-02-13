@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="row">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <h5 class="title-bg">Обращение к выпускникам</h5>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img src="{% static "static/main_image/face.png" %}" style="width: 100%; max-height: 200px;" class="img-thumbnail"/>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    Просим Вас оставить о себе какие-либо данные. <br/>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce felis odio, vehicula a malesuada ac, imperdiet eu arcu. In ligula velit, ornare sed ornare id, cursus nec arcu. Nullam id dolor augue. Integer maximus mattis diam vitae euismod. Integer et lacus risus. Proin in arcu ornare, consequat tortor non, feugiat risus. Fusce finibus leo tincidunt odio dictum ullamcorper. Suspendisse rutrum mi ipsum, in congue tortor gravida nec.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <h5 class="title-bg">Творческие коллективы</h5>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    {% for group in groups %}
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-2 col-xs-1">
+                                        <div class="thumbnail">
+                                            <img data-src="{{ group.ImagePath }}" alt="..." style="width: 100%; max-height: 200px">
+                                            <div class="caption">
+                                                <h3>{{ group.name }}</h3>
+                                                <p>{{ graduate.article|truncatewords:20 }}</p>
+                                                <p><a href="/groups/{{ group.id }}/">class="btn btn-primary" role="button">Читать далее...</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+            <ul class="pagination">
+
+                {% if graduates.has_previous %}
+                    <li><a href="/graduates/page/{{ graduates.previous_page_number }}/">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&laquo;</a></li>
+                {% endif %}
+
+                {% for page in graduates.paginator.page_range %}
+                    {% if page == graduates.value %}
+                        <li class="active"><a href="/graduates/page/{{ page }}/">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="/graduates/page/{{ page }}/">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if graduates.has_next %}
+                    <li><a href="/graduates/page/{{ graduates.next_page_number }}/">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="">&raquo;</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+
+    </div>
+{% endblock %}
