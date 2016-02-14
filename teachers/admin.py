@@ -2,7 +2,7 @@ from django.contrib import admin
 from teachers.models import teacher, Degreys, Ranks, Posts, categoryQval
 
 class teacherAdmin(admin.ModelAdmin):
-    fields = ['fullname','alias','ImagePath','post','rank','degree','categoryQval','subject','article']
+    fields = ['fullname','alias','ImagePath','post','rank','degree','categoryQval','subject','article','author']
     list_filter = ['publish_date']
     list_display = ['fullname', 'post', 'publish_date', 'author']
 

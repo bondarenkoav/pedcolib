@@ -63,15 +63,14 @@
          <div class="row header">
          <!-- Begin Header -->
             <!-- Logo -->
-             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 logo">
+             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 logo">
                  <a href="/">
-                     <img src="{% static "static/img/logo.png" %}" alt="logo" style="width: 99%;"/>
+                     <img src="{% static "static/img/logo.png" %}" alt="logo" style="width: 100%;"/>
                  </a>
-                 <h5>Виртуальный музей Педагогического колледжа г.Орска</h5>
              </div>
 
             <!-- Main Navigation -->
-             <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 navigation">
+             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 navigation">
 
                  <nav class="navbar navbar-default" role="navigation">
                      <div class="container-fluid">
@@ -80,9 +79,24 @@
                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                              <ul class="nav navbar-nav">
                                  <li class="active"><a href="/">Главная</a></li>
-                                 <li><a href="/teachers/">Педагоги</a></li>
-                                 <li><a href="/groups/">Коллективы</a></li>
+                                 <li class="dropdown">
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Персоналии <b class="caret"></b></a>
+                                     <ul class="dropdown-menu">
+                                         <li><a href="/leaders/">Руководители</a></li>
+                                         <li><a href="/teachers/">Преподаватели</a></li>
+                                         <li><a href="/dynasties/">Династии</a></li>
+                                         <li><a href="/veterans/">Ветераны</a></li>
+                                         <li><a href="/groups/">Коллективы</a></li>
+                                     </ul>
+                                 </li>
                                  <li><a href="/graduates/">Выпускники</a></li>
+                                 <li class="dropdown">
+                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Альбомы <b class="caret"></b></a>
+                                     <ul class="dropdown-menu">
+                                         <li><a href="/leaders/">Фотоальбом</a></li>
+                                         <li><a href="/teachers/">Видеоальбом</a></li>
+                                     </ul>
+                                 </li>
                                  <li><a href="/responses/">Отзывы</a></li>
                              </ul>
                          </div><!-- /.navbar-collapse -->
