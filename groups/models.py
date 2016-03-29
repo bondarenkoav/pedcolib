@@ -1,19 +1,20 @@
+# -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class group(models.Model):
-    class Meta:
-        db_table = 'group'
-    #Фамилия Имя Отчество преподавателя
-    nameGroup   = models.CharField(max_length=20)
-
-    #ImagePath   = models.ImageField(upload_to='static/main_image/groups') #Главное изображение
-    article     = models.TextField()    #Статья
-
-    #SEO-настройки
-    tags        = models.CharField(max_length=50)
+    nameGroup   = models.CharField(max_length=100)   #Р¤Р°РјРёР»РёСЏ РРјСЏ РћС‚С‡РµСЃС‚РІРѕ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ
+    ImagePath   = models.ImageField(upload_to='static/main_image/groups',verbose_name='Р“Р»Р°РІРЅРѕРµ С„РѕС‚Рѕ РіСЂСѓРїРїС‹', blank=True) #Р“Р»Р°РІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
+    article     = RichTextField(verbose_name='РўРµРєСЃС‚ СЃС‚Р°С‚СЊРё',blank=True)    #РЎС‚Р°С‚СЊСЏ
+    #tags        = models.CharField(max_length=100)
     author      = models.ForeignKey(User)
     publish_date= models.DateTimeField(auto_now_add=True)
     likes       = models.IntegerField(default=0)
-    def __str__(self):
-         return self.nameGroup
+    class Meta:
+        db_table = 'group'
+        ordering = ['nameGroup']
+        verbose_name = "РљСЂРµР°С‚РёРІРЅР°СЏ РіСЂСѓРїРїР°"
+        verbose_name_plural = "РљСЂРµР°С‚РёРІРЅС‹Рµ РіСЂСѓРїРїС‹"
+        def __unicode__(self):
+            return self.title

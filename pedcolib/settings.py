@@ -35,20 +35,21 @@ TEMPLATE_DIRS =(
     'C:/django_project/pedcolib/news/templates',
     'C:/django_project/pedcolib/graduates/templates',
     'C:/django_project/pedcolib/responses/templates',
-    'C:/django_project/pedcolib/comments/templates'
+    'C:/django_project/pedcolib/fvgallery/templates',
 )
-
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor','ckeditor_uploader','imagepool','pytz','imagekit','django_bootstrap_breadcrumbs','bootstrap3',
-    'teachers','graduates','groups','home','news','responses','publications'
+    'ckeditor','ckeditor_uploader','embed_video','autoslug','transliterate','captcha',
+    'imagepool','pytz','imagekit','bootstrap3',
+    'teachers','graduates','groups','home','news','responses','publications','fvgallery'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,8 +114,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     ('static','C:/django_project/pedcolib/static'),
 )
-
-MEDIA_URL = '/media/'
+#IMAGEKIT_DEFAULT_CACHEFILE_BACKEND = 'imagekit.cachefiles.backends.Async'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CKEDITOR_CONFIGS = {

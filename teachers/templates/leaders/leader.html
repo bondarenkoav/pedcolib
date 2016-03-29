@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <h3>{{ leader.fullname }}</h3>
+    <hr/>
+    {% if leader.post.visible == True %}
+        <div>Должность: {{ leader.post }}</div>
+    {% endif %}
+    {% if leader.rank.visible == True %}
+        <div>Звание: {{ leader.rank }}</div>
+    {% endif %}
+    {% if leader.degree.visible == True %}
+        <div>Степень: {{ leader.degree }}</div>
+    {% endif %}
+    <div style="margin-top: 10px">Предметы: {{ leader.subject }}</div>
+    <hr/>
+
+    <div style="margin-top: 10px">
+        {{ leader.article|safe }}
+    </div>
+
+    <hr/>
+    <div style="margin-top: 10px">
+        <span class="text-left">Автор: {{ leader.author }}</span>
+        <span class="text-center">Дата публикования: {{ leader.publish_date }}</span>
+    </div>
+
+{% endblock %}

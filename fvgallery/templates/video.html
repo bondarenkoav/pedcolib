@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{# or use variables (with embedding, too) #}
+{% block content %}
+    <h1>{{ video.title }}</h1>
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class=embed-responsive-item src="{{ video.video }}" allowfullscreen></iframe>
+    </div>
+    <div class="text-right" style="margin-top: 15px;"><span>{{ video.publish_date }}</span></div>
+{% endblock %}

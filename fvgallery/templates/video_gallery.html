@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+
+<div class="row">
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <h5 class="title-bg">Обращение к выпускникам</h5>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <img src="{% static "static/img/graduates.jpg" %}" style="width: 100%;" class="img-thumbnail"/>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    Просим Вас оставить о себе какие-либо данные. <br/>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce felis odio, vehicula a malesuada ac, imperdiet eu arcu. In ligula velit, ornare sed ornare id, cursus nec arcu. Nullam id dolor augue. Integer maximus mattis diam vitae euismod. Integer et lacus risus. Proin in arcu ornare, consequat tortor non, feugiat risus. Fusce finibus leo tincidunt odio dictum ullamcorper. Suspendisse rutrum mi ipsum, in congue tortor gravida nec.
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <h5 class="title-bg">Список видеороликов</h5>
+                {% for item in video_list %}
+
+                    <div class="list-group">
+                        <a href="/gallery/video/{{ item.id }}/" class="list-group-item active">
+                            <h4 class="list-group-item-heading">{{ item.title }}</h4>
+                            <p class="list-group-item-text">Опубликовано: {{ item.publish_date }}</p>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

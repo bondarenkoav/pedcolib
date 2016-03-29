@@ -9,6 +9,6 @@ def home_get_info(request):
         'slides'  : Slider.objects.all(),
         'news_all': novosti.objects.all(),
         'responses': response.objects.all(),
-        'publications': publics.objects.all()[:12]
+        'publications': publics.objects.all()[:12],
     }
 )

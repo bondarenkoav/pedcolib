@@ -94,7 +94,10 @@
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     {% buttons %}
-                        <button type="submit" class="btn btn-primary" d>ОТПРАВИТЬ</button>
+                        <button type="submit" class="btn btn-primary">ОТПРАВИТЬ</button>
+                    {% endbuttons %}
+                    {% buttons %}
+                        <button class='js-captcha-refresh'></button>
                     {% endbuttons %}
                 </form>
             </div>

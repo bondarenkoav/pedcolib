@@ -20,11 +20,13 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^teachers/', include('teachers.urls')),
-    url(r'^graduates/', include('graduates.urls')),
-    url(r'^groups/', include('groups.urls')),
-    url(r'^news/', include('news.urls')),
-    url(r'^responses/', include('responses.urls')),
-    url(r'^publications/', include('publications.urls')),
-    url(r'^', include('home.urls')),
+    url(r'^persons/', include('teachers.urls', namespace='persons')),
+    url(r'^graduates/', include('graduates.urls', namespace='graduates')),
+    url(r'^groups/', include('groups.urls', namespace='groups')),
+    url(r'^news/', include('news.urls', namespace='news')),
+    url(r'^responses/', include('responses.urls', namespace='responses')),
+    url(r'^publications/', include('publications.urls', namespace='publications')),
+    url(r'^gallery/', include('fvgallery.urls', namespace='gallery')),
+    url(r'^', include('home.urls', namespace='home')),
+    url(r'^captcha/', include('captcha.urls'))
 ]

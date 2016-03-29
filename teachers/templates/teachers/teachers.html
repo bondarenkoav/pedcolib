@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block breadcrumbs %}
+{% endblock %}
+
 {% block content %}
 
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
@@ -50,7 +53,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                                 <div style="margin-top: -10px;">
-                                    <h3><a href="/teachers/{{ teacher.id }}/">{{ teacher.fullname }}</a></h3>
+                                    <h3><a href="/persons/teachers/teacher/{{ teacher.alias }}/">{{ teacher.fullname }}</a></h3>
                                 </div>
                                 <ul class="list-unstyled">
                                     <li>
@@ -90,21 +93,21 @@
             <ul class="pagination">
 
                 {% if teachers.has_previous %}
-                    <li><a href="/teachers/page/{{ teachers.previous_page_number }}/">&laquo;</a></li>
+                    <li><a href="/persons/teachers/page/{{ teachers.previous_page_number }}/">&laquo;</a></li>
                 {% else %}
                     <li class="disabled"><a href="">&laquo;</a></li>
                 {% endif %}
 
                 {% for page in teachers.paginator.page_range %}
                     {% if page == teachers.value %}
-                        <li class="active"><a href="/teachers/page/{{ page }}/">{{ page }}</a></li>
+                        <li class="active"><a href="/persons/teachers/page/{{ page }}/">{{ page }}</a></li>
                     {% else %}
-                        <li><a href="/teachers/page/{{ page }}/">{{ page }}</a></li>
+                        <li><a href="/persons/teachers/page/{{ page }}/">{{ page }}</a></li>
                     {% endif %}
                 {% endfor %}
 
                 {% if teachers.has_next %}
-                    <li><a href="/teachers/page/{{ teachers.next_page_number }}/">&raquo;</a></li>
+                    <li><a href="/persons/teachers/page/{{ teachers.next_page_number }}/">&raquo;</a></li>
                 {% else %}
                     <li class="disabled"><a href="">&raquo;</a></li>
                 {% endif %}

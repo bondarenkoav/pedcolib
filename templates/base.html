@@ -53,6 +53,12 @@
                 }
             });
         });
+        $('.js-captcha-refresh').click(function(){
+            $form = $(this).parents('form');
+            $.getJSON($(this).data('url'), {}, function(json) { // This should update your captcha image src and captcha hidden input
+            });
+            return false;
+        });
     </script>
 
 </head>
@@ -78,14 +84,14 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                              <ul class="nav navbar-nav">
-                                 <li class="active"><a href="/">Главная</a></li>
+                                 <li><a href="/">Главная</a></li>
                                  <li class="dropdown">
                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Персоналии <b class="caret"></b></a>
                                      <ul class="dropdown-menu">
-                                         <li><a href="/leaders/">Руководители</a></li>
-                                         <li><a href="/teachers/">Преподаватели</a></li>
+                                         <li><a href="/persons/leaders/">Руководители</a></li>
+                                         <li><a href="/persons/teachers/">Преподаватели</a></li>
+                                         <li><a href="/persons/veterans/">Ветераны</a></li>
                                          <li><a href="/dynasties/">Династии</a></li>
-                                         <li><a href="/veterans/">Ветераны</a></li>
                                          <li><a href="/groups/">Коллективы</a></li>
                                      </ul>
                                  </li>
@@ -93,8 +99,8 @@
                                  <li class="dropdown">
                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Альбомы <b class="caret"></b></a>
                                      <ul class="dropdown-menu">
-                                         <li><a href="/leaders/">Фотоальбом</a></li>
-                                         <li><a href="/teachers/">Видеоальбом</a></li>
+                                         <li><a href="/gallery/photo/">Фотоальбом</a></li>
+                                         <li><a href="/gallery/video/">Видеоальбом</a></li>
                                      </ul>
                                  </li>
                                  <li><a href="/responses/">Отзывы</a></li>
@@ -111,6 +117,7 @@
 
          <!-- Breadcrumb -->
         {% block breadcrumbs %}
+
         {% endblock %}
          <!-- End Breadcrumb -->
 

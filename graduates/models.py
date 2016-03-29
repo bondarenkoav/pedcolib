@@ -1,18 +1,26 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
 from django.db import models
+from imagekit.processors import ResizeToFit, Adjust,ResizeToFill
+from imagekit.models import ProcessedImageField
 
 class graduate(models.Model):
-    class Meta:
-        db_table = 'graduate'
-
     fullname     = models.CharField(verbose_name='Ваше ФИО', max_length=80, blank=True)
-    postandarea  = models.TextField(verbose_name='Где и кем работаете', blank=True)
-    ImagePath    = models.ImageField(upload_to='static/main_image/graduates', verbose_name='Ваше фото', blank=True) #Главное изображение
+    postandarea  = ProcessedImageField(
+        upload_to='static/main_image/graduates',
+        processors=[ResizeToFill(300, 400)],
+        format='JPEG',
+        options={'quality': 100},
+        verbose_name='Ваше фото'
+    )
     article      = models.TextField(verbose_name='Несколько слов о себе',)    #Статья
     publish_date = models.DateTimeField(auto_now_add=True)
     soglasie     = models.BooleanField(verbose_name='Даю согласие на обработку личных данных',)
     veryfid_data = models.BooleanField(verbose_name='Данные подтверждены администратором сайта', default=False)
-
-    def __str__(self):
-         return self.fullname
+    class Meta:
+        db_table = 'graduate'
+        ordering = ['fullname']
+        verbose_name = 'Выпускник'
+        verbose_name_plural = "Выпускники"
+        def __unicode__(self):
+            return self.title

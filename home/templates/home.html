@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load imagekit %}
 
 {% block content %}
     <!-- Begin Headline -->
@@ -10,8 +11,8 @@
             <div class="flexslider">
                 <ul class="slides">
 
-                    {% for picture in slides %}
-                        <li><a href="{{ picture.link }}"><img src="{% static picture.ImagePath %}" alt="{{ picture.title }}" style="width: 100%;"/></a></li>
+                    {% for image in slides %}
+                        <li><img src="{% static image.ImagePath_resize %}" alt="{{ image.title }}" style="width: 100%;"/></li>
                     {% endfor %}
 
                 </ul>
