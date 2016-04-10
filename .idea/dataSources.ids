@@ -9,7 +9,7 @@
       <column name="Name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="slug" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_teacher_1" table="teacher" schema="" catalog="" columns="degree_id"/>
+      <exported-key name="#FAKE_teacher_2" table="teacher" schema="" catalog="" columns="degree_id"/>
       <index name="Degreys_2dbcba41" unique="true" columns="slug"/>
     </table>
     <table name="Posts" schema="" catalog="" type="TABLE">
@@ -139,7 +139,7 @@
       <column name="Name" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="slug" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <exported-key name="#FAKE_teacher_2" table="teacher" schema="" catalog="" columns="categoryQval_id"/>
+      <exported-key name="#FAKE_teacher_1" table="teacher" schema="" catalog="" columns="categoryQval_id"/>
       <index name="categoryQval_2dbcba41" unique="true" columns="slug"/>
     </table>
     <table name="commentas" schema="" catalog="" type="TABLE">
@@ -191,19 +191,19 @@
     </table>
     <table name="fvgallery_album" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="alias" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="image" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="article" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="title" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="alias" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="article" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="ImagePath" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
       <exported-key name="#FAKE_fvgallery_photo_1" table="fvgallery_photo" schema="" catalog="" columns="album_id"/>
     </table>
     <table name="fvgallery_photo" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="publish_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="album_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="photo" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="title" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_fvgallery_photo_1" columns="album_id" ref-table="fvgallery_album" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="fvgallery_photo_95c3b9df" unique="true" columns="album_id"/>
@@ -401,20 +401,21 @@
       <column name="article" sqlType="TEXT" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="publish_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <column name="author_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
-      <column name="ImagePath" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="degree_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="categoryQval_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="alias" sqlType="VARCHAR(50)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
-      <column name="degree_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="ImagePath" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_teacher_1" columns="degree_id" ref-table="Degreys" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_teacher_2" columns="categoryQval_id" ref-table="categoryQval" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_teacher_1" columns="categoryQval_id" ref-table="categoryQval" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_teacher_2" columns="degree_id" ref-table="Degreys" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_teacher_3" columns="author_id" ref-table="auth_user" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <exported-key name="#FAKE_teacher_post_2" table="teacher_post" schema="" catalog="" columns="teacher_id"/>
       <exported-key name="#FAKE_teacher_rank_2" table="teacher_rank" schema="" catalog="" columns="teacher_id"/>
       <exported-key name="#FAKE_teacher_subjects_2" table="teacher_subjects" schema="" catalog="" columns="teacher_id"/>
-      <index name="teacher_0e798d2a" unique="true" columns="degree_id"/>
+      <exported-key name="#FAKE_teachers_teacher_photo_album_1" table="teachers_teacher_photo_album" schema="" catalog="" columns="teacher_id"/>
       <index name="teacher_724874d1" unique="true" columns="alias"/>
       <index name="teacher_785ce5af" unique="true" columns="categoryQval_id"/>
+      <index name="teacher_0e798d2a" unique="true" columns="degree_id"/>
       <index name="teacher_4f331e2f" unique="true" columns="author_id"/>
     </table>
     <table name="teacher_post" schema="" catalog="" type="TABLE">
@@ -446,6 +447,16 @@
       <foreign-key name="#FAKE_teacher_subjects_2" columns="teacher_id" ref-table="teacher" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="teacher_subjects_ffaba1d1" unique="true" columns="subject_id"/>
       <index name="teacher_subjects_d9614d40" unique="true" columns="teacher_id"/>
+    </table>
+    <table name="teachers_teacher_photo_album" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="photo" sqlType="VARCHAR(100)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="teacher_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="descript" sqlType="VARCHAR(300)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_teachers_teacher_photo_album_1" columns="teacher_id" ref-table="teacher" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="teachers_teacher_photo_album_d9614d40" unique="true" columns="teacher_id"/>
     </table>
     <table name="treemenus_menu" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>

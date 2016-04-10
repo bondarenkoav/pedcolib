@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFit, Adjust, ResizeToFill
+from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 from autoslug import AutoSlugField
 
@@ -69,10 +71,31 @@ class teacher(models.Model):
     degree      = models.ForeignKey(Degreys,verbose_name='Степень')    #Степень
     categoryQval= models.ForeignKey(categoryQval, verbose_name='Категория')    #Категория
     subjects    = models.ManyToManyField(Subject, verbose_name='Предмет', blank=True)   #Предметы
-    ImagePath   = models.ImageField(upload_to='static/main_image/teachers',verbose_name='Путь до главного фото')
-    Image_thumb = ImageSpecField(source='ImagePath',processors=[ResizeToFill(150, 250)],format='JPEG',options={'quality': 60})
+    ImagePath   = ProcessedImageField(
+        upload_to='static/main_image/teachers',
+        processors=[ResizeToFill(200, 350)],
+        format='JPEG',
+        options={'quality': 100},
+        verbose_name='Путь до изображения')
     article     = RichTextField(verbose_name='Текст статьи',blank=True)    #Статья
     author      = models.ForeignKey(User)
     publish_date= models.DateTimeField(verbose_name='Дата публикации',auto_now_add=True)
     def __str__(self):
          return self.fullname
+
+#Фотоальбом
+class teacher_photo_album(models.Model):
+    teacher = models.ForeignKey(teacher, verbose_name='Альбом')
+    title = models.CharField(u'Название фотографии', max_length=100)
+    descript = models.CharField(u'Описание фотографии', max_length=300, blank=True)
+    photo = ProcessedImageField(
+        upload_to='static/main_image/teachers/photo_album/',
+        processors=[ResizeToFit(600, 480)],
+        format='JPEG',
+        options={'quality': 100},
+        verbose_name='Путь до изображения')
+    class Meta:
+        verbose_name = 'Фото'
+        verbose_name_plural = "Фотографии"
+    def __str__(self):
+        return self.title

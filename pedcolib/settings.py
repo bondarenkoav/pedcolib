@@ -49,7 +49,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'ckeditor','ckeditor_uploader','embed_video','autoslug','transliterate','captcha',
     'imagepool','pytz','imagekit','bootstrap3',
-    'teachers','graduates','groups','home','news','responses','publications','fvgallery'
+    'teachers','graduates','groups','home','news','responses','publications','fvgallery',
+    #'photologue','sortedm2m',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -108,9 +109,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+_PATH = os.path.abspath(os.path.dirname(__file__))
+
+#MEDIA_ROOT = os.path.join(_PATH, 'files', 'media')
+#MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = (
     ('static','C:/django_project/pedcolib/static'),
 )

@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^responses/', include('responses.urls', namespace='responses')),
     url(r'^publications/', include('publications.urls', namespace='publications')),
     url(r'^gallery/', include('fvgallery.urls', namespace='gallery')),
+    url(r'^captcha/', include('captcha.urls')),
+    #url(r'^photologue/', include('photologue.urls', namespace='photologue')),
     url(r'^', include('home.urls', namespace='home')),
-    url(r'^captcha/', include('captcha.urls'))
 ]

@@ -6,42 +6,9 @@
 
 {% block content %}
 
-    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <ul class="list-group" style="font-size: 150%; text-align: center;">
-            <li class="list-group-item"><a href="teachers/a/">А</a></li>
-            <li class="list-group-item"><a href="teachers/b/">Б</a></li>
-            <li class="list-group-item"><a href="teachers/v/">В</a></li>
-            <li class="list-group-item"><a href="teachers/g/">Г</a></li>
-            <li class="list-group-item"><a href="teachers/d/">Д</a></li>
-            <li class="list-group-item"><a href="teachers/e/">Её</a></li>
-            <li class="list-group-item"><a href="teachers/j/">Ж</a></li>
-            <li class="list-group-item"><a href="teachers/z/">З</a></li>
-            <li class="list-group-item"><a href="teachers/i/">Ий</a></li>
-            <li class="list-group-item"><a href="teachers/k/">К</a></li>
-            <li class="list-group-item"><a href="teachers/l/">Л</a></li>
-            <li class="list-group-item"><a href="teachers/m/">М</a></li>
-            <li class="list-group-item"><a href="teachers/n/">Н</a></li>
-            <li class="list-group-item"><a href="teachers/o/">О</a></li>
-            <li class="list-group-item"><a href="teachers/p/">П</a></li>
-            <li class="list-group-item"><a href="teachers/r/">Р</a></li>
-            <li class="list-group-item"><a href="teachers/s/">С</a></li>
-            <li class="list-group-item"><a href="teachers/t/">Т</a></li>
-            <li class="list-group-item"><a href="teachers/u/">У</a></li>
-            <li class="list-group-item"><a href="teachers/f/">Ф</a></li>
-            <li class="list-group-item"><a href="teachers/h/">Х</a></li>
-            <li class="list-group-item"><a href="teachers/c/">Ц</a></li>
-            <li class="list-group-item"><a href="teachers/ch/">Ч</a></li>
-            <li class="list-group-item"><a href="teachers/sh/">Ш</a></li>
-            <li class="list-group-item"><a href="teachers/shya/">Щ</a></li>
-            <li class="list-group-item"><a href="teachers/ee/">Э</a></li>
-            <li class="list-group-item"><a href="teachers/yu/">Ю</a></li>
-            <li class="list-group-item"><a href="teachers/ya/">Я</a></li>
-        </ul>
-    </div>
-
-    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h5 class="title-bg">Преподаватели и руководящий состав</h5>
+            <h5 class="title-bg">Преподаватели</h5>
         </div>
 
             {% for teacher in teachers %}
@@ -57,22 +24,24 @@
                                 </div>
                                 <ul class="list-unstyled">
                                     <li>
-                                        {% if teacher.post.visible == True %}
-                                            <div>Должность: {{ teacher.post }}</div>
+                                        {% if teacher.categoryQval %}
+                                            <div>Категория квал-ии: {{ teacher.categoryQval }}</div>
                                         {% endif %}
                                     </li>
                                     <li>
-                                        {% if teacher.rank.visible == True %}
+                                        {% if teacher.rank %}
                                             <div>Звание: {{ teacher.rank }}</div>
                                         {% endif %}
                                     </li>
                                     <li>
-                                        {% if teacher.degree.visible == True %}
+                                        {% if teacher.degree %}
                                             <div>Степень: {{ teacher.degree }}</div>
                                         {% endif %}
                                     </li>
                                     <li>
-                                        <div>Предмет: {{ teacher.subject }}</div>
+                                        {% if teacher.subjects %}
+                                            <div>Предмет: {{ teacher.subjects }}</div>
+                                        {% endif %}
                                     </li>
                                 </ul>
                             <!--

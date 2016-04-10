@@ -5,29 +5,55 @@
 {% endblock %}
 
 {% block content %}
-
-    <h3>{{ teacher.fullname }}</h3>
-    <hr/>
-    {% if teacher.post.visible == True %}
-        <div>Должность: {{ teacher.post }}</div>
-    {% endif %}
-    {% if teacher.rank.visible == True %}
-        <div>Звание: {{ teacher.rank }}</div>
-    {% endif %}
-    {% if teacher.degree.visible == True %}
-        <div>Степень: {{ teacher.degree }}</div>
-    {% endif %}
-    <div style="margin-top: 10px">Предметы: {{ teacher.subject }}</div>
-    <hr/>
-
-    <div style="margin-top: 10px">
-        {{ teacher.article|safe }}
-    </div>
-
-    <hr/>
-    <div style="margin-top: 10px">
-        <span class="text-left">Автор: {{ teacher.author }}</span>
-        <span class="text-center">Дата публикования: {{ teacher.publish_date }}</span>
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <img src="{% static teacher.ImagePath %}" style="height: 300px; margin-top: -7px; margin-left: 5px;" class="img-thumbnail"/>
+            <h4>Галерея</h4>
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    {% for image in teacher_album %}
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <a class="thumbnail" href="#">
+                                <img class="img-responsive" src="{{ image.photo }}" style="height: 100%" alt="">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <h3>{{ teacher.fullname }}</h3>
+            <ul class="list-unstyled">
+                <li>
+                    {% if teacher.post %}
+                        <div>Категория квал-ии: {{ teacher.categoryQval }}</div>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if teacher.rank %}
+                        <div>Звание: {% for item in teacher.rank %}{{ item }}{% endfor %}{{ teacher.rank }}</div>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if teacher.degree %}
+                        <div>Степень: {{ teacher.degree }}</div>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if teacher.subjects %}
+                        <div>Предмет: {% for item in teacher.subjects %}{{ subject }}{% endfor %}</div>
+                    {% endif %}
+                </li>
+            </ul>
+            <div style="margin-top: 10px">
+                {{ teacher.article|safe }}
+            </div>
+        </div>
+        <hr/>
+        <div style="margin-top: 10px">
+            <span class="text-left">Автор: {{ teacher.author }}</span>
+            <span class="text-center">Дата публикования: {{ teacher.publish_date }}</span>
+        </div>
     </div>
 
 {% endblock %}

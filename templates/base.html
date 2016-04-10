@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "static/css/font-awesome.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "static/css/flexslider.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "static/css/custom-styles.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/thumbnail-gallery.css" %}">
     <style>
         p {
             text-indent: 20px; /* Отступ первой строки в пикселах */
@@ -66,17 +67,18 @@
 
      <div class="container">
 
-         <div class="row header">
+         <div class="row header" style="margin-bottom: -10px;">
          <!-- Begin Header -->
             <!-- Logo -->
-             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 logo">
+             <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 logo" style="margin-top: 10px;">
                  <a href="/">
-                     <img src="{% static "static/img/logo.png" %}" alt="logo" style="width: 100%;"/>
+                     <span><img src="{% static "static/img/logo.png" %}" alt="logo" style="max-width: 400px;"/></span>
+                     <span style="margin-left: 20px; margin-top: -10px; "><h4>ГАПОУ "Педколледж" г.Орска</h4></span>
                  </a>
              </div>
 
             <!-- Main Navigation -->
-             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 navigation">
+             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 navigation">
 
                  <nav class="navbar navbar-default" role="navigation">
                      <div class="container-fluid">
